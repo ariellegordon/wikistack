@@ -28,7 +28,11 @@ const Page = db.define('page', {
   },
   status: {
     type: Sequelize.ENUM('open', 'closed')
-  }
+  },
+})
+
+Page.beforeValidate(function (page) {
+  page.slug = "hello"
 })
 
 module.exports = { db, Page, User };
