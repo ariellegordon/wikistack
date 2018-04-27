@@ -1,9 +1,6 @@
 const Sequelize = require('sequelize');
-const db = new Sequelize('postgres://localhost:5432/wikistack');
+const db = new Sequelize('postgres://localhost:5432/wikistack', {logging: false});
 
-module.exports = {
-  db
-}
 
 const User = db.define('user', {
   name: {
@@ -33,3 +30,5 @@ const Page = db.define('page', {
     type: Sequelize.ENUM('open', 'closed')
   }
 })
+
+module.exports = { db, Page, User };
