@@ -1,6 +1,6 @@
 const express = require('express');
 const { Page } = require('../models');
-const { addPage } = require('../views')
+const { addPage, editPage, main, userList, userPages, wikiPage } = require('../views')
 const router = express.Router();
 module.exports = router;
 
@@ -9,7 +9,13 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/'), (req, res, next) => {
+  const page = new Page(req.body);
+  try {
+    await page.save();
+    res.redirect('/')
+  } catch {
 
+  }
 }
 
 router.get('/add', (req, res, next) => {
